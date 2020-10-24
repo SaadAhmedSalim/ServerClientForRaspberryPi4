@@ -1,5 +1,7 @@
 # ServerClientForRaspberryPi4
 
+[![time tracker](https://wakatime.com/badge/github/SaadAhmedSalim/ServerClientForRaspberryPi4.svg)](https://wakatime.com/badge/github/SaadAhmedSalim/ServerClientForRaspberryPi4)
+
 Requirements: 
 
 - IntelliJ Idea or Sublime Text3
