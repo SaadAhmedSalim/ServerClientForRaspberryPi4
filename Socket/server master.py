@@ -10,7 +10,7 @@ PORT = 65432        # Port to listen on (non-privileged ports are > 1023)
 
 def random_data():
     pin = 4
-    sensor = Adafruit_DHT.DHT22
+    sensor = Adafruit_DHT.DHT11
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
 
     if humidity is not None and temperature is not None:
