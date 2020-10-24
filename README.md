@@ -10,6 +10,8 @@ Requirements:
 
 Guidelines:
 
+- Turn on MAC and open IntelliJ Idea.
+
 - Make a project in IntelliJ idea and paste the client and server.py. 
 
 - Make sure you have installed the module and path that correctly.
