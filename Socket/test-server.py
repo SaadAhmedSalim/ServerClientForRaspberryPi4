@@ -100,29 +100,30 @@ def random_data():
 
 
 def my_server():
-
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         print("Server Started waiting for client to connect ")
         s.bind((HOST, PORT))
         s.listen(5)
         conn, addr = s.accept()
 
-        with conn:
-            print('Connected by', addr)
-            while True:
+        print('Got connection from', addr)
+        conn.sendall(b'Thank you for connecting')
+            
 
+        while True:
+                  
                 data = conn.recv(1024).decode('utf-8')
 
                 if str(data) == "Data":
 
-                    print("Ok Sending data...")
+                    print("Ok Sending data ")
 
                     my_data = random_data()
 
                     x_encoded_data = my_data.encode('utf-8')
 
                     conn.sendall(x_encoded_data)
-                    sys.exit("Sent Data Successfully.")
+                    sys.exit("Taken")
 
                 elif  str(data) == "Quit":
                     print("shutting down server ")
@@ -134,9 +135,10 @@ def my_server():
                 else:
                     pass
 
-    sys.exit()
+                conn.close()
 
-
+        
+       
 if __name__ == '__main__':
     while True:
         my_server()
