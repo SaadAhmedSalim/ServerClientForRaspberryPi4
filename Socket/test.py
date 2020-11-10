@@ -1,7 +1,7 @@
 import socket
 import threading
 import time
-import sys
+
 
 HOST = '192.168.0.106'  # The server's hostname or IP address
 PORT = 65432        # The port used by the server
@@ -17,7 +17,12 @@ def my_client():
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
-        s.connect((HOST, PORT))
+        try:
+            s.connect((HOST, PORT))
+
+        except socket.error as e:
+            print(str(e))
+            s.connect((HOST, PORT))
 
         my = input("Enter command ")
 
@@ -28,14 +33,11 @@ def my_client():
         data = s.recv(1024).decode('utf-8')
 
         x_temperature,y_humidity = process_data_from_server(data)
-
         print("Temperature in Celcius {}".format(x_temperature))
         print("Humidity in Percentage {}".format(y_humidity))
 
         s.close()
-        sys.exit("Recieved Data Successfully")
-
-    sys.exit()
+        time.sleep(5)
 
 
 if __name__ == "__main__":
